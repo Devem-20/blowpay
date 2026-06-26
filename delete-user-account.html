@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Account - BlowPay</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e5e5e5;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        #app {
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #0d0d0d);
+            min-height: 100vh;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #ec4899; border-radius: 9999px; }
+        * { scrollbar-width: thin; scrollbar-color: #ec4899 #1a1a1a; }
+
+        .delete-card {
+            background: rgba(239, 68, 68, 0.03);
+            border: 1px solid rgba(239, 68, 68, 0.12);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+        .delete-card:hover {
+            border-color: rgba(239, 68, 68, 0.25);
+        }
+        .delete-card-danger {
+            background: rgba(239, 68, 68, 0.06);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+        .delete-card-danger:hover {
+            border-color: rgba(239, 68, 68, 0.35);
+            box-shadow: 0 0 40px rgba(239, 68, 68, 0.05);
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            transition: all 0.3s ease;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-danger:hover:not(:disabled) {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px rgba(239, 68, 68, 0.3);
+        }
+        .btn-danger:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            color: #e5e5e5;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .input-field {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            color: white;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #ec4899;
+        }
+        .input-field::placeholder {
+            color: #6b7280;
+        }
+        .input-field option {
+            background: #1a1a1a;
+            color: white;
+        }
+        .input-field.select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+            cursor: pointer;
+        }
+        .input-field.select option {
+            background: #1a1a1a;
+            color: #e5e5e5;
+        }
+        .input-field.match {
+            border-color: #22c55e;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.05);
+        }
+        .input-field.error {
+            border-color: #ef4444;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.05);
+        }
+        .response-box {
+            background: rgba(239, 68, 68, 0.06);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .list-item-delete {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: #d1d5db;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .list-item-delete:last-child {
+            border-bottom: none;
+        }
+        .list-item-keep {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: #d1d5db;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .list-item-keep:last-child {
+            border-bottom: none;
+        }
+        .icon-delete {
+            color: #ef4444;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+        .icon-keep {
+            color: #f59e0b;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+        .label-required {
+            color: #ef4444;
+            margin-left: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- ─── NAVBAR ────────────────────────────────────────── -->
+        <nav class="flex items-center justify-between px-4 sm:px-8 py-4 border-b border-white/10">
+            <div class="flex items-center gap-2">
+                <img src="images/logo.png" alt="BlowPay Logo" class="h-10 sm:h-12 w-auto" />
+                <span class="text-white font-bold text-xl sm:text-2xl">BLOWPAY</span>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors text-sm">Home</a>
+                <a href="aboutus.html" class="text-gray-400 hover:text-white transition-colors text-sm">About Us</a>
+                <a href="terms.html" class="text-gray-400 hover:text-white transition-colors text-sm">Terms</a>
+                <a href="privacy.html" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy</a>
+                <a href="faq.html" class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition-colors text-sm">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" class="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-red-500 px-5 py-2.5 rounded-full hover:from-pink-600 hover:to-red-600 transition-all shadow-lg shadow-pink-500/30">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Download App
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full glass border border-white/20">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- ─── MOBILE MENU ──────────────────────────────────────── -->
+        <div id="mobile-menu" class="lg:hidden fixed top-20 left-4 right-4 z-30 rounded-2xl shadow-2xl p-4" style="background: rgba(20, 20, 20, 0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08);">
+            <a href="index.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Home</a>
+            <a href="aboutus.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">About Us</a>
+            <a href="terms.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Terms</a>
+            <a href="privacy.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Privacy</a>
+            <a href="faq.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">FAQ</a>
+            <a href="contact.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Contact</a>
+            <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" id="mobile-cta" class="flex items-center justify-center gap-2 w-full text-center text-white bg-gradient-to-r from-pink-500 to-red-500 px-4 py-3 rounded-xl mt-2 font-medium btn-shimmer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download App
+            </a>
+        </div>
+
+        <!-- ─── DELETE ACCOUNT CONTENT ────────────────────────────── -->
+        <section class="py-16 px-6 sm:px-12 lg:px-20">
+            <div class="max-w-3xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <div class="flex justify-center mb-4">
+                        <svg class="w-20 h-20 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 fade-in visible">
+                        Account <span class="text-red-500">Request</span>
+                    </h1>
+                    <p class="text-gray-400 text-lg max-w-2xl mx-auto fade-in visible">
+                        Submit a request to manage your account. Select the type of request below and provide the necessary details.
+                    </p>
+                </div>
+
+                <!-- ─── REQUEST FORM ──────────────────────────────────── -->
+                <div class="delete-card-danger fade-in">
+                    <h3 class="text-white font-semibold text-lg mb-4">Submit a Request</h3>
+                    
+                    <!-- Email -->
+                    <div class="mb-5">
+                        <label class="block text-gray-300 text-sm font-medium mb-2">
+                            Email Address <span class="text-red-500">*</span>
+                        </label>
+                        <input id="request-email" type="email" class="input-field" placeholder="you@example.com" required />
+                    </div>
+
+                    <!-- Request Type Dropdown -->
+                    <div class="mb-5">
+                        <label class="block text-gray-300 text-sm font-medium mb-2">
+                            Request Type <span class="text-red-500">*</span>
+                        </label>
+                        <select id="request-type" class="input-field select" required>
+                            <option value="">Select a request type...</option>
+                            <option value="delete"> Delete My Account</option>
+                            <option value="pause"> Temporarily Pause Account</option>
+                            <option value="export-data"> Export My Data</option>
+                            <option value="export"> Export</option>
+                        </select>
+                    </div>
+
+                    <!-- Additional Notes -->
+                    <div class="mb-6">
+                        <label class="block text-gray-300 text-sm font-medium mb-2">
+                            Additional Notes <span class="text-gray-500 text-xs">(optional)</span>
+                        </label>
+                        <textarea id="request-notes" rows="4" class="input-field" placeholder="Please provide any additional information or details about your request..." style="resize: vertical; min-height: 100px;"></textarea>
+                    </div>
+
+                    <!-- ─── CONFIRMATION (only for delete) ────────────── -->
+                    <div id="delete-confirmation-section" class="hidden mb-4 p-4 bg-red-500/5 border border-red-500/20 rounded-xl">
+                        <p class="text-gray-300 text-sm mb-3">
+                            To confirm deletion, type <span class="text-red-500 font-semibold">DELETE</span> in the field below.
+                        </p>
+                        <input id="delete-confirm-input" type="text" class="input-field" placeholder="Type DELETE here..." autocomplete="off" />
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="flex flex-wrap items-center gap-4">
+                        <button id="submit-request-btn" class="btn-danger" disabled>
+                            <span class="flex items-center gap-2">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Submit Request
+                            </span>
+                        </button>
+                        <a href="index.html" class="btn-secondary">
+                            Cancel
+                        </a>
+                    </div>
+
+                    <!-- ─── MOCK RESPONSE ────────────────────────────── -->
+                    <div id="request-response" class="hidden response-box">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            <div>
+                                <p id="response-title" class="text-white font-semibold">Request Submitted Successfully</p>
+                                <p id="response-message" class="text-gray-400 text-sm mt-1">
+                                    Your request has been received. You will receive a confirmation email at <span class="text-white" id="response-email">your-email@example.com</span>.
+                                </p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ─── SUPPORT CTA ────────────────────────────────────── -->
+                <div class="text-center mt-10 fade-in">
+                    <p class="text-gray-400 text-sm">
+                        Need help? <a href="contact.html" class="text-pink-400 hover:text-pink-300 transition-colors">Contact our support team</a> for assistance.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── FOOTER ────────────────────────────────────────────── -->
+        <footer class="bg-gray-900/50 text-white pt-12 pb-8 px-6 sm:px-12 lg:px-20 border-t border-white/5">
+            <div class="max-w-6xl mx-auto text-center">
+                <p class="text-gray-500 text-sm">© 2026 BlowPay. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ─── JAVASCRIPT ────────────────────────────────────────────── -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ─── Mobile Menu Toggle ──────────────────────────────
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    mobileMenu.classList.toggle('open');
+                    
+                    const icon = menuBtn.querySelector('svg');
+                    if (mobileMenu.classList.contains('open')) {
+                        icon.innerHTML = `<path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    } else {
+                        icon.innerHTML = `<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    }
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('open');
+                        const icon = menuBtn.querySelector('svg');
+                        icon.innerHTML = `<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    });
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                        mobileMenu.classList.remove('open');
+                        const icon = menuBtn.querySelector('svg');
+                        icon.innerHTML = `<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    }
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.remove('open');
+                        const icon = menuBtn.querySelector('svg');
+                        icon.innerHTML = `<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    }
+                });
+            }
+
+            // ─── Fade In on Scroll ──────────────────────────────
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
+            fadeElements.forEach(function(el) { fadeObserver.observe(el); });
+
+            setTimeout(function() {
+                fadeElements.forEach(function(el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) el.classList.add('visible');
+                });
+            }, 100);
+
+            // ─── FORM LOGIC ──────────────────────────────────────────
+            const emailInput = document.getElementById('request-email');
+            const typeSelect = document.getElementById('request-type');
+            const notesInput = document.getElementById('request-notes');
+            const deleteConfirmSection = document.getElementById('delete-confirmation-section');
+            const deleteConfirmInput = document.getElementById('delete-confirm-input');
+            const submitBtn = document.getElementById('submit-request-btn');
+            const responseBox = document.getElementById('request-response');
+            const responseTitle = document.getElementById('response-title');
+            const responseMessage = document.getElementById('response-message');
+            const responseEmail = document.getElementById('response-email');
+
+            const requestTypeLabels = {
+                'delete': 'Account Deletion Request',
+                'pause': 'Account Pause Request',
+                'export-data': 'Data Export Request',
+                'export': 'Export Request'
+            };
+
+            const requestTypeMessages = {
+                'delete': 'Your account deletion request has been received. You will receive a confirmation email at ',
+                'pause': 'Your account pause request has been received. You will receive a confirmation email at ',
+                'export-data': 'Your data export request has been received. You will receive a confirmation email at ',
+                'export': 'Your export request has been received. You will receive a confirmation email at '
+            };
+
+            function validateForm() {
+                const emailValid = emailInput.value.trim() !== '' && emailInput.value.includes('@');
+                const typeValid = typeSelect.value !== '';
+                let deleteValid = true;
+
+                if (typeSelect.value === 'delete') {
+                    deleteValid = deleteConfirmInput.value.trim().toUpperCase() === 'DELETE';
+                }
+
+                const isValid = emailValid && typeValid && deleteValid;
+                submitBtn.disabled = !isValid;
+                return isValid;
+            }
+
+            // Show/hide delete confirmation based on request type
+            typeSelect.addEventListener('change', function() {
+                if (this.value === 'delete') {
+                    deleteConfirmSection.classList.remove('hidden');
+                    deleteConfirmInput.value = '';
+                    deleteConfirmInput.classList.remove('match');
+                } else {
+                    deleteConfirmSection.classList.add('hidden');
+                }
+                validateForm();
+            });
+
+            emailInput.addEventListener('input', validateForm);
+            deleteConfirmInput.addEventListener('input', function() {
+                const isMatch = this.value.trim().toUpperCase() === 'DELETE';
+                if (isMatch) {
+                    this.classList.add('match');
+                    this.classList.remove('error');
+                } else {
+                    this.classList.remove('match');
+                    this.classList.add('error');
+                }
+                validateForm();
+            });
+
+            // ─── Submit Request ──────────────────────────────────────
+            submitBtn.addEventListener('click', function() {
+                if (!this.disabled && validateForm()) {
+                    const email = emailInput.value.trim();
+                    const type = typeSelect.value;
+                    const notes = notesInput.value.trim();
+
+                    // Update response
+                    responseTitle.textContent = requestTypeLabels[type] || 'Request Submitted';
+                    responseEmail.textContent = email;
+
+                    // Handle delete type specially
+                    if (type === 'delete') {
+                        responseMessage.innerHTML = 
+                            'Your account deletion request has been received. You will receive a confirmation email at <span class="text-white" id="response-email">' + email + '</span>.';
+                    } else {
+                        responseMessage.innerHTML = 
+                            requestTypeMessages[type] + '<span class="text-white" id="response-email">' + email + '</span>.';
+                    }
+
+                    // Show response
+                    responseBox.classList.remove('hidden');
+                    responseBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // Disable button
+                    this.disabled = true;
+                    this.innerHTML = `
+                        <span class="flex items-center gap-2">
+                            <svg class="w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v4M12 22v-4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M22 12h-4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                            </svg>
+                            Processing...
+                        </span>
+                    `;
+
+                    setTimeout(() => {
+                        this.innerHTML = `
+                            <span class="flex items-center gap-2">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Request Submitted
+                            </span>
+                        `;
+                        this.disabled = true;
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

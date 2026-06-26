@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - BlowPay</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e5e5e5;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        #app {
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #0d0d0d);
+            min-height: 100vh;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #ec4899; border-radius: 9999px; }
+        * { scrollbar-width: thin; scrollbar-color: #ec4899 #1a1a1a; }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- ─── NAVBAR ────────────────────────────────────────── -->
+        <nav class="flex items-center justify-between px-4 sm:px-8 py-4 border-b border-white/10">
+            <!-- Logo + BLOWPAY Text -->
+            <div class="flex items-center gap-2">
+                <img src="images/logo.png" alt="BlowPay Logo" class="h-10 sm:h-12 w-auto" />
+                <span class="text-white font-bold text-xl sm:text-2xl">BLOWPAY</span>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors text-sm">Home</a>
+                <a href="aboutus.html" class="text-gray-400 hover:text-white transition-colors text-sm">About Us</a>
+                <a href="terms.html" class="text-gray-400 hover:text-white transition-colors text-sm">Terms</a>
+                <a href="privacy.html" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy</a>
+                <a href="faq.html" class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a>
+                <a href="contact.html" class="text-white transition-colors text-sm font-medium">Contact</a>
+            </div>
+
+            <!-- Right Side: Download App + Hamburger -->
+            <div class="flex items-center gap-3">
+                <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" class="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-red-500 px-5 py-2.5 rounded-full hover:from-pink-600 hover:to-red-600 transition-all shadow-lg shadow-pink-500/30">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Download App
+                </a>
+                <!-- Hamburger Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full glass border border-white/20">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- ─── MOBILE MENU (Fixed Opacity) ────────────────────────── -->
+        <div id="mobile-menu" class="lg:hidden fixed top-20 left-4 right-4 z-30 rounded-2xl shadow-2xl p-4" style="background: rgba(20, 20, 20, 0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08);">
+            <a href="index.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Home</a>
+            <a href="aboutus.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">About Us</a>
+            <a href="terms.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Terms</a>
+            <a href="privacy.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Privacy</a>
+            <a href="faq.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">FAQ</a>
+            <a href="contact.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Contact</a>
+            <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" id="mobile-cta" class="flex items-center justify-center gap-2 w-full text-center text-white bg-gradient-to-r from-pink-500 to-red-500 px-4 py-3 rounded-xl mt-2 font-medium btn-shimmer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download App
+            </a>
+        </div>
+
+        <!-- ─── CONTACT CONTENT ────────────────────────────────────── -->
+        <section class="py-16 px-6 sm:px-12 lg:px-20">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 fade-in visible">
+                        Contact <span class="bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">Us</span>
+                    </h1>
+                    <p class="text-gray-400 text-lg max-w-2xl mx-auto fade-in visible">
+                        It's never been easier to get in touch with BlowPay. Call us, email us, and we'll get back to you as soon as possible!
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- ─── Contact Form ────────────────────────────── -->
+                    <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 fade-in">
+                        <h3 class="text-2xl font-semibold text-white mb-6">Send a Message</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Full Name</label>
+                                <input type="text" class="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 transition-colors" placeholder="John Doe" />
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Email Address</label>
+                                <input type="email" class="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 transition-colors" placeholder="john@example.com" />
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Subject</label>
+                                <input type="text" class="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 transition-colors" placeholder="How can we help?" />
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Message</label>
+                                <textarea rows="5" class="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 transition-colors" placeholder="Your message here..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-red-500 px-6 py-3 rounded-xl hover:from-pink-600 hover:to-red-600 transition-all">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- ─── Contact Info ────────────────────────────── -->
+                    <div class="space-y-6">
+                        <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 fade-in">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7L12 13 2 7"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">Email</h4>
+                                    <a href="mailto:support@blowpay.app" class="text-gray-400 hover:text-pink-400 transition-colors">support@blowpay.app</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 fade-in">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">Phone</h4>
+                                    <p class="text-gray-400">+234 802 351 2266</p>
+                                    <p class="text-gray-400">+234 906 534 5907</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 fade-in">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">Address</h4>
+                                    <p class="text-gray-400 text-sm">Plot 25, Ojefia Crescent, Victory Estate, Amuwo Odofin, Ago Place Way, Lagos-Nigeria</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 fade-in">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center gap-1">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">Socials</h4>
+                                    <div class="flex gap-4">
+                                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Facebook</a>
+                                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Twitter</a>
+                                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Instagram</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── FOOTER ────────────────────────────────────────────── -->
+        <footer class="bg-gray-900/50 text-white pt-12 pb-8 px-6 sm:px-12 lg:px-20 border-t border-white/5">
+            <div class="max-w-6xl mx-auto text-center">
+                <p class="text-gray-500 text-sm">© 2026 BlowPay. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ─── JAVASCRIPT ────────────────────────────────────────────── -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    mobileMenu.classList.toggle('open');
+                    
+                    const icon = menuBtn.querySelector('svg');
+                    if (mobileMenu.classList.contains('open')) {
+                        icon.innerHTML = `<path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    } else {
+                        icon.innerHTML = `<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    }
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('open');
+                        const icon = menuBtn.querySelector('svg');
+                        icon.innerHTML = `<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    });
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                        mobileMenu.classList.remove('open');
+                        const icon = menuBtn.querySelector('svg');
+                        icon.innerHTML = `<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    }
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.remove('open');
+                        const icon = menuBtn.querySelector('svg');
+                        icon.innerHTML = `<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    }
+                });
+            }
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
+            fadeElements.forEach(function(el) { fadeObserver.observe(el); });
+
+            setTimeout(function() {
+                fadeElements.forEach(function(el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) el.classList.add('visible');
+                });
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>

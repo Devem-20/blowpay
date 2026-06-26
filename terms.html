@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms & Conditions - BlowPay</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e5e5e5;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        #app {
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #0d0d0d);
+            min-height: 100vh;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #ec4899; border-radius: 9999px; }
+        * { scrollbar-width: thin; scrollbar-color: #ec4899 #1a1a1a; }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- ─── NAVBAR ────────────────────────────────────────── -->
+        <nav class="flex items-center justify-between px-4 sm:px-8 py-4 border-b border-white/10">
+            <!-- Logo + BLOWPAY Text -->
+            <div class="flex items-center gap-2">
+                <img src="images/logo.png" alt="BlowPay Logo" class="h-10 sm:h-12 w-auto" />
+                <span class="text-white font-bold text-xl sm:text-2xl">BLOWPAY</span>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors text-sm">Home</a>
+                <a href="aboutus.html" class="text-gray-400 hover:text-white transition-colors text-sm">About Us</a>
+                <a href="terms.html" class="text-white transition-colors text-sm font-medium">Terms</a>
+                <a href="privacy.html" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy</a>
+                <a href="faq.html" class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition-colors text-sm">Contact</a>
+            </div>
+
+            <!-- Right Side: Download App + Hamburger -->
+            <div class="flex items-center gap-3">
+                <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" class="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-red-500 px-5 py-2.5 rounded-full hover:from-pink-600 hover:to-red-600 transition-all shadow-lg shadow-pink-500/30">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Download App
+                </a>
+                <!-- Hamburger Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full glass border border-white/20">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- ─── MOBILE MENU (Fixed Opacity) ────────────────────────── -->
+        <div id="mobile-menu" class="lg:hidden fixed top-20 left-4 right-4 z-30 rounded-2xl shadow-2xl p-4" style="background: rgba(20, 20, 20, 0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08);">
+            <a href="index.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Home</a>
+            <a href="aboutus.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">About Us</a>
+            <a href="terms.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Terms</a>
+            <a href="privacy.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Privacy</a>
+            <a href="faq.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">FAQ</a>
+            <a href="contact.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Contact</a>
+            <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" id="mobile-cta" class="flex items-center justify-center gap-2 w-full text-center text-white bg-gradient-to-r from-pink-500 to-red-500 px-4 py-3 rounded-xl mt-2 font-medium btn-shimmer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download App
+            </a>
+        </div>
+
+        <!-- ─── CONTENT ────────────────────────────────────────────── -->
+        <section class="py-16 px-6 sm:px-12 lg:px-20">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl font-bold text-white mb-2 fade-in visible">
+                    Terms &amp; <span class="bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">Conditions</span>
+                </h1>
+                <p class="text-gray-400 mb-12 fade-in visible">Effective Date: 23rd January, 2025</p>
+
+                <div class="space-y-8">
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">1. Acceptance of Terms</h2>
+                        <p class="text-gray-400 leading-relaxed">By creating an account, accessing our website, or using our services, you agree to abide by these Terms and our Privacy Policy. You confirm that you are at least 18 years old and legally capable of entering into binding contracts.</p>
+                    </div>
+
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">2. Services Provided</h2>
+                        <p class="text-gray-400 leading-relaxed">We offer a range of services, including but not limited to:</p>
+                        <ul class="list-disc list-inside text-gray-400 mt-2 space-y-1">
+                            <li>Money tracking and finance management</li>
+                            <li>Utility bill payments (electricity, cable, etc.)</li>
+                            <li>Mobile top-up services (airtime and data)</li>
+                            <li>QR code payments</li>
+                            <li>Flight bookings</li>
+                        </ul>
+                        <p class="text-gray-400 leading-relaxed mt-2">These services are provided as-is, and we reserve the right to modify, suspend, or discontinue any part of the services without prior notice.</p>
+                    </div>
+
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">3. User Accounts</h2>
+                        <h3 class="text-lg font-semibold text-white mt-4">3.1 Registration</h3>
+                        <p class="text-gray-400 leading-relaxed">To access certain services, you are required to create an account. When registering, you agree to provide accurate and up-to-date information and to maintain the confidentiality of your login credentials.</p>
+                        <h3 class="text-lg font-semibold text-white mt-4">3.2 Account Security</h3>
+                        <p class="text-gray-400 leading-relaxed">You are responsible for all activities that occur under your account. If you suspect any unauthorized use, you must notify us immediately. We are not liable for any loss or damage arising from your failure to protect your account.</p>
+                        <h3 class="text-lg font-semibold text-white mt-4">3.3 Termination</h3>
+                        <p class="text-gray-400 leading-relaxed">We reserve the right to suspend or terminate your account at any time, for any reason, including a breach of these Terms or fraudulent activity.</p>
+                    </div>
+
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">4. Payments and Transactions</h2>
+                        <h3 class="text-lg font-semibold text-white mt-4">4.1 Payment Methods</h3>
+                        <p class="text-gray-400 leading-relaxed">To use our services, you may need to provide a valid payment method, such as a bank account, credit/debit card, or mobile wallet. You authorize us to process payments for services you select, and all transactions are final.</p>
+                        <h3 class="text-lg font-semibold text-white mt-4">4.2 Fees</h3>
+                        <p class="text-gray-400 leading-relaxed">Some of our services may include fees, which will be disclosed before you complete a transaction. You are responsible for any applicable charges, taxes, or fees related to your transactions.</p>
+                        <h3 class="text-lg font-semibold text-white mt-4">4.3 Transaction Limits</h3>
+                        <p class="text-gray-400 leading-relaxed">We may set limits on the amount of transactions you can process through our platform, subject to compliance with anti-money laundering (AML) laws and regulations.</p>
+                    </div>
+
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">5. Use of Services</h2>
+                        <h3 class="text-lg font-semibold text-white mt-4">5.1 Authorized Use</h3>
+                        <p class="text-gray-400 leading-relaxed">You agree to use our platform only for lawful purposes and in accordance with these Terms. You must not use our services to engage in any illegal, fraudulent, or malicious activities.</p>
+                        <h3 class="text-lg font-semibold text-white mt-4">5.2 Prohibited Activities</h3>
+                        <p class="text-gray-400 leading-relaxed">You must not:</p>
+                        <ul class="list-disc list-inside text-gray-400 mt-2 space-y-1">
+                            <li>Use automated means to access our platform</li>
+                            <li>Reverse-engineer or decompile any aspect of our services</li>
+                            <li>Engage in any activity that disrupts or harms our platform, servers, or networks</li>
+                        </ul>
+                    </div>
+
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">6. Intellectual Property</h2>
+                        <p class="text-gray-400 leading-relaxed">All content on the platform, including text, images, logos, and software, is owned by or licensed to BlowPay and is protected by intellectual property laws. You are not permitted to copy, modify, distribute, or use any content for commercial purposes without our prior written consent.</p>
+                    </div>
+
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">7. Disclaimer of Warranties</h2>
+                        <p class="text-gray-400 leading-relaxed">Our services are provided on an "as-is" and "as-available" basis. We make no warranties, either express or implied, regarding the accuracy, reliability, or availability of the services.</p>
+                    </div>
+
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">8. Limitation of Liability</h2>
+                        <p class="text-gray-400 leading-relaxed">To the maximum extent permitted by law, BlowPay and its affiliates, employees, and agents will not be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with your use of our platform or services.</p>
+                    </div>
+
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">9. Indemnification</h2>
+                        <p class="text-gray-400 leading-relaxed">You agree to indemnify and hold BlowPay, its officers, directors, employees, and agents harmless from any claims, losses, damages, liabilities, costs, or expenses arising from your use of the platform.</p>
+                    </div>
+
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">10. Third-Party Services</h2>
+                        <p class="text-gray-400 leading-relaxed">Our platform may contain links to third-party websites or services that are not owned or controlled by us. We are not responsible for the content, policies, or practices of any third-party sites.</p>
+                    </div>
+
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">11. Changes to Terms</h2>
+                        <p class="text-gray-400 leading-relaxed">We reserve the right to modify these Terms at any time. Any changes will be posted on this page, and the "Effective Date" at the top will be updated.</p>
+                    </div>
+
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">12. Governing Law</h2>
+                        <p class="text-gray-400 leading-relaxed">These Terms are governed by and construed in accordance with the laws of Nigeria. Any disputes arising under these Terms will be resolved exclusively in the courts of Nigeria.</p>
+                    </div>
+
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">13. Contact Us</h2>
+                        <p class="text-gray-400 leading-relaxed">If you have any questions or concerns regarding these Terms or our services, please contact us at:</p>
+                        <ul class="text-gray-400 mt-2 space-y-1">
+                            <li><strong class="text-white">Email:</strong> support@blowpay.app</li>
+                            <li><strong class="text-white">Phone:</strong> +234 802 351 2266</li>
+                            <li><strong class="text-white">Address:</strong> Plot 25, Ojefia Crescent, Victory Estate, Amuwo Odofin, Ago Place Way, Lagos-Nigeria</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── FOOTER ────────────────────────────────────────────── -->
+        <footer class="bg-gray-900/50 text-white pt-12 pb-8 px-6 sm:px-12 lg:px-20 border-t border-white/5">
+            <div class="max-w-6xl mx-auto text-center">
+                <p class="text-gray-500 text-sm">© 2026 BlowPay. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    mobileMenu.classList.toggle('open');
+                    
+                    const icon = menuBtn.querySelector('svg');
+                    if (mobileMenu.classList.contains('open')) {
+                        icon.innerHTML = `<path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    } else {
+                        icon.innerHTML = `<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    }
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('open');
+                        const icon = menuBtn.querySelector('svg');
+                        icon.innerHTML = `<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    });
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                        mobileMenu.classList.remove('open');
+                        const icon = menuBtn.querySelector('svg');
+                        icon.innerHTML = `<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    }
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.remove('open');
+                        const icon = menuBtn.querySelector('svg');
+                        icon.innerHTML = `<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                    }
+                });
+            }
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
+            fadeElements.forEach(function(el) { fadeObserver.observe(el); });
+
+            setTimeout(function() {
+                fadeElements.forEach(function(el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) el.classList.add('visible');
+                });
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>

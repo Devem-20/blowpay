@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlowPay - Bill Payments Made Easy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="cursor-glow"></div>
+
+    <div id="app" class="min-h-screen">
+
+        <!-- ============================================================ -->
+        <!-- HERO SECTION -->
+        <!-- ============================================================ -->
+        <section id="hero" class="relative min-h-screen overflow-hidden">
+
+            <!-- Background blobs -->
+            <div id="hero-bg" class="absolute inset-0">
+                <div id="hero-bg-gradient" class="absolute inset-0"></div>
+                <div id="hero-orb-1" class="blob absolute top-[-200px] right-[-200px] w-[500px] h-[500px] rounded-full blur-3xl animate-slow-pulse" style="background:rgba(236,72,153,0.08);"></div>
+                <div id="hero-orb-2" class="blob-2 absolute bottom-[-200px] left-[-200px] w-[500px] h-[500px] rounded-full blur-3xl animate-slow-pulse" style="background:rgba(168,85,247,0.08);animation-delay:2s;"></div>
+                <div id="hero-orb-3" class="blob-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl animate-slow-pulse" style="background:rgba(236,72,153,0.04);animation-delay:4s;"></div>
+            </div>
+
+            <!-- ─── NAVBAR ────────────────────────────────────────── -->
+            <nav id="navbar" class="relative z-20 flex items-center justify-between px-4 sm:px-8 py-4">
+                <!-- Logo -->
+                <div id="logo-container" class="flex items-center gap-2 fade-in visible">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full glass border-2 border-pink-500/30 shadow-lg shadow-pink-500/20 flex items-center justify-center p-1.5">
+                        <img src="images/logo.png" alt="BlowPay Logo" id="logo" class="w-full h-auto object-contain rounded-full" />
+                        
+                    </div>
+                     <span class="text-white font-bold text-xl sm:text-2xl">BLOWPAY</span>
+                </div>
+
+                <!-- Desktop Nav -->
+                <div id="desktop-nav" class="hidden lg:flex items-center justify-center absolute left-1/2 -translate-x-1/2">
+                    <div id="nav-links" class="glass glass-nav flex items-center gap-1 shadow-lg shadow-pink-500/5">
+                        <a href="#features"     class="px-4 py-2 text-sm font-medium rounded-full transition-all text-gray-400 hover:text-white">Features</a>
+                        <a href="#services"     class="px-4 py-2 text-sm font-medium rounded-full transition-all text-gray-400 hover:text-white">Services</a>
+                        <a href="#howitworks"   class="px-4 py-2 text-sm font-medium rounded-full transition-all text-gray-400 hover:text-white">How It Works</a>
+                        <a href="#testimonials" class="px-4 py-2 text-sm font-medium rounded-full transition-all text-gray-400 hover:text-white">Testimonials</a>
+                    </div>
+                </div>
+
+                <!-- Right CTA -->
+                <div id="nav-cta" class="flex items-center gap-3">
+                   
+                        </svg>
+                    </button>
+                    <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" id="nav-cta-btn" class="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-red-500 px-5 py-2.5 rounded-full hover:from-pink-600 hover:to-red-600 transition-all shadow-lg shadow-pink-500/30 btn-shimmer btn-magnetic">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        Download App
+                    </a>
+                    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full glass border border-white/20">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12h18M3 6h18M3 18h18"/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden glass fixed top-20 left-4 right-4 z-30 rounded-2xl shadow-2xl p-4">
+                <a href="#features"     class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Features</a>
+                <a href="#services"     class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Services</a>
+                <a href="#howitworks"   class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">How It Works</a>
+                <a href="#testimonials" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Testimonials</a>
+                <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" id="mobile-cta" class="flex items-center justify-center gap-2 w-full text-center text-white bg-gradient-to-r from-pink-500 to-red-500 px-4 py-3 rounded-xl mt-2 font-medium btn-shimmer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Download App
+                </a>
+            </div>
+
+            <!-- ─── HERO CONTENT ────────────────────────────────── -->
+            <div id="hero-content" class="relative z-10 flex flex-col md:flex-row items-center justify-center min-h-[calc(100vh-100px)] px-6 sm:px-12 lg:px-20 gap-8 lg:gap-16 py-8">
+
+                <!-- Left: Text -->
+                <div id="hero-text" class="max-w-2xl w-full text-center md:text-left">
+
+                    <h1 id="hero-title" data-split="words" class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] mb-4 text-white">
+                        Simplify your bills <br/>
+                        <span class="text-gradient-pink">Simplify your life</span>
+                        <br/>
+                        with <span class="text-gradient-pink">BlowPay</span>
+                    </h1>
+
+                    <p id="hero-description" class="text-base sm:text-lg max-w-xl leading-relaxed reveal-blur fade-in-d3 text-gray-400">
+                        Welcome to BlowPay, where seamless transactions meet convenience. Pay your
+                        bills — like data, electricity, Netflix, and more — with ease, all in one place.
+                    </p>
+
+                    <div id="hero-buttons" class="flex flex-wrap items-center gap-4 mt-8 justify-center md:justify-start fade-in fade-in-d4">
+                        <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" id="hero-cta" class="inline-flex items-center gap-2 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full px-8 py-4 hover:from-pink-600 hover:to-red-600 transition-all shadow-lg shadow-pink-500/30 btn-shimmer btn-magnetic">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                            Download App
+                        </a>
+                        <a href="#features" id="hero-learn" class="inline-flex items-center gap-2 text-sm font-medium border border-white/20 text-gray-400 px-6 py-4 rounded-full hover:text-white hover:border-white/40 transition-colors">Learn More</a>
+                    </div>
+
+                    <!-- Bill Categories -->
+                    <div id="hero-categories" class="flex flex-wrap items-center gap-3 mt-8 justify-center md:justify-start fade-in fade-in-d5">
+                        <div class="category-item glass glass-pill flex items-center gap-2 text-gray-400">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.94 0"/><path d="M12 20h.01"/></svg>
+                            <span class="text-xs font-medium">Data</span>
+                        </div>
+                        <div class="category-item glass glass-pill flex items-center gap-2 text-gray-400">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                            <span class="text-xs font-medium">Electricity</span>
+                        </div>
+                        <div class="category-item glass glass-pill flex items-center gap-2 text-gray-400">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                            <span class="text-xs font-medium">Netflix</span>
+                        </div>
+                        <div class="category-item glass glass-pill flex items-center gap-2 text-gray-400">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="10"/></svg>
+                            <span class="text-xs font-medium">and more</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Bouncy Mobile Mockup -->
+                <div id="hero-gif" class="hidden md:block order-1 lg:order-2 w-full max-w-[400px] flex-shrink-0 fade-in fade-in-d3">
+                    <div class="relative w-full max-w-[340px] sm:max-w-[380px] mx-auto animate-float float-3d">
+                        <img src="images/bouncy.png" alt="BlowPay Mobile App" class=/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION: WHY TRUST US -->
+        <!-- ============================================================ -->
+        <section id="features" class="relative py-24 px-6 sm:px-12 lg:px-20 overflow-hidden">
+            <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-br from-pink-200/10 to-red-200/10 rounded-full blur-3xl blob-2 pointer-events-none"></div>
+
+            <div class="relative max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <span class="inline-block glass glass-pill px-4 py-1.5 text-xs font-semibold uppercase tracking-wider mb-4 text-pink-400">Why Choose Us</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white reveal-wipe">
+                        Why Thousands Trust Us for
+                        <span class="text-gradient-pink">Their Utility Needs</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 perspective-grid">
+                    <div class="feature-card glass glass-card tilt-card clay p-8 reveal-scale fade-in-d1">
+                        <div class="clay-icon bg-gradient-to-r from-pink-500 to-red-500 mb-5">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h3 class="feature-title text-xl font-semibold mb-3 text-white tilt-depth">Ease of Use</h3>
+                        <p class="feature-desc text-gray-400 leading-relaxed">Our intuitive platform makes managing your bill payments quick and simple—even on the go.</p>
+                    </div>
+
+                    <div class="feature-card glass glass-card tilt-card clay p-8 reveal-scale fade-in-d2">
+                        <div class="clay-icon bg-gradient-to-r from-pink-400 to-amber-400 mb-5">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <h3 class="feature-title text-xl font-semibold mb-3 text-white tilt-depth">24/7 Support</h3>
+                        <p class="feature-desc text-gray-400 leading-relaxed">Anytime you need help, our customer support team is here to assist, ensuring a seamless experience.</p>
+                    </div>
+
+                    <div class="feature-card glass glass-card tilt-card clay p-8 reveal-scale fade-in-d3">
+                        <div class="clay-icon bg-gradient-to-r from-amber-400 to-pink-500 mb-5">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                        </div>
+                        <h3 class="feature-title text-xl font-semibold mb-3 text-white tilt-depth">Security You Can Trust</h3>
+                        <p class="feature-desc text-gray-400 leading-relaxed">We prioritize your safety with cutting-edge encryption, ensuring your transactions and data are always secure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION: KEY FEATURES -->
+        <!-- ============================================================ -->
+        <section id="services" class="relative py-24 px-6 sm:px-12 lg:px-20">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <span class="inline-block glass glass-pill px-4 py-1.5 text-xs font-semibold uppercase tracking-wider mb-4 text-pink-400">Key Features</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white reveal-wipe">
+                        A Complete Suite for Your
+                        <span class="text-gradient-warm">Bill Payment Needs</span>
+                    </h2>
+                    <p class="max-w-2xl mx-auto text-lg text-gray-400 reveal-blur fade-in-d1">We offer all-in-one solutions to help you manage your bill payments easily and securely for everyday utilities.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 perspective-grid">
+                    <div class="service-card glass glass-card tilt-card clay p-8 reveal-scale fade-in-d1">
+                        <div class="clay-icon glass mb-5">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                        </div>
+                        <h3 class="service-title text-xl font-semibold mb-3 text-white tilt-depth">Utility Payments</h3>
+                        <p class="service-desc text-gray-400 leading-relaxed">From electricity bills to TV subscriptions, settle all your household bills in seconds—no long queues, no hassles.</p>
+                    </div>
+
+                    <div class="service-card glass glass-card tilt-card clay p-8 reveal-scale fade-in-d2">
+                        <div class="clay-icon glass mb-5">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                        </div>
+                        <h3 class="service-title text-xl font-semibold mb-3 text-white tilt-depth">Top-Ups &amp; Data Recharges</h3>
+                        <p class="service-desc text-gray-400 leading-relaxed">Need airtime or data? Recharge instantly with our seamless top-up services.</p>
+                    </div>
+
+                    <div class="service-card glass glass-card tilt-card clay p-8 reveal-scale fade-in-d3">
+                        <div class="clay-icon glass mb-5">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                        </div>
+                        <h3 class="service-title text-xl font-semibold mb-3 text-white tilt-depth">QR Code Payments</h3>
+                        <p class="service-desc text-gray-400 leading-relaxed">Make purchases at participating stores by scanning secure QR codes for fast and reliable payments.</p>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div id="stats" class="mt-16 grid grid-cols-3 gap-6 glass glass-card fade-in fade-in-d4">
+                    <div class="stat-item text-center border-r border-white/10 last:border-0">
+                        <div class="stat-number count-up text-3xl sm:text-4xl font-bold" data-target="50" data-suffix="+" data-duration="1400">50+</div>
+                        <p class="stat-label text-sm mt-1 text-gray-400">Cities</p>
+                    </div>
+                    <div class="stat-item text-center border-r border-white/10 last:border-0">
+                        <div class="stat-number count-up text-3xl sm:text-4xl font-bold" data-target="2" data-suffix="M+" data-duration="1800">2M+</div>
+                        <p class="stat-label text-sm mt-1 text-gray-400">Transactions</p>
+                    </div>
+                    <div class="stat-item text-center">
+                        <div class="stat-number count-up text-3xl sm:text-4xl font-bold" data-target="55" data-suffix="K+" data-decimals="1" data-duration="1600">55K+</div>
+                        <p class="stat-label text-sm mt-1 text-gray-400">Users</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION: HOW IT WORKS -->
+        <!-- ============================================================ -->
+        <section id="howitworks" class="relative py-24 px-6 sm:px-12 lg:px-20 overflow-hidden">
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="blob absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl" style="background:rgba(168,85,247,0.06);"></div>
+            </div>
+
+            <div class="relative max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <span class="inline-block glass glass-pill px-4 py-1.5 text-xs font-semibold uppercase tracking-wider mb-4 text-pink-400">How It Works</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white reveal-wipe">
+                        Get Started in
+                        <span class="text-gradient-warm">3 Simple Steps</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 perspective-grid">
+                    <div class="step-card glass glass-card tilt-card clay p-8 text-center reveal-scale fade-in-d1">
+                        <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-pink-500 to-red-500 flex items-center justify-center mb-5 shadow-lg tilt-depth-lg">
+                            <span class="text-2xl font-bold text-white">01</span>
+                        </div>
+                        <h3 class="step-title text-xl font-semibold mb-3 text-white">Track Your Bills</h3>
+                        <p class="step-desc text-gray-400 leading-relaxed">Create your account in minutes and start managing your bill payments right away.</p>
+                    </div>
+
+                    <div class="step-card glass glass-card tilt-card clay p-8 text-center reveal-scale fade-in-d2">
+                        <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-pink-400 to-amber-400 flex items-center justify-center mb-5 shadow-lg tilt-depth-lg">
+                            <span class="text-2xl font-bold text-white">02</span>
+                        </div>
+                        <h3 class="step-title text-xl font-semibold mb-3 text-white">Add Payment Methods</h3>
+                        <p class="step-desc text-gray-400 leading-relaxed">Securely link your bank accounts or cards to pay bills and track payments.</p>
+                    </div>
+
+                    <div class="step-card glass glass-card tilt-card clay p-8 text-center reveal-scale fade-in-d3">
+                        <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-amber-400 to-pink-500 flex items-center justify-center mb-5 shadow-lg tilt-depth-lg">
+                            <span class="text-2xl font-bold text-white">03</span>
+                        </div>
+                        <h3 class="step-title text-xl font-semibold mb-3 text-white">Enjoy All-in-One Bill Services</h3>
+                        <p class="step-desc text-gray-400 leading-relaxed">Monitor your payments, settle bills, book essential services, and more—all from one platform.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION: TESTIMONIALS -->
+        <!-- ============================================================ -->
+        <section id="testimonials" class="relative py-24 px-6 sm:px-12 lg:px-20">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <span class="inline-block glass glass-pill px-4 py-1.5 text-xs font-semibold uppercase tracking-wider mb-4 text-pink-400">Testimonials</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white reveal-wipe">
+                        What Our
+                        <span class="text-gradient-pink">Users Say</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 perspective-grid">
+                    <div class="testimonial-card glass glass-card tilt-card clay p-8 reveal-scale fade-in-d1">
+                        <div class="flex text-amber-400 gap-0.5 mb-4">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <p class="testimonial-text text-gray-400 leading-relaxed mb-6">"BlowPay has revolutionized how I pay my business bills. Fast, reliable, and secure!"</p>
+                        <div>
+                            <p class="testimonial-name font-semibold text-white">Devem Emmanuel</p>
+                            <p class="text-sm text-gray-500">web developer</p>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass glass-card tilt-card clay p-8 reveal-scale fade-in-d2">
+                        <div class="flex text-amber-400 gap-0.5 mb-4">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <p class="testimonial-text text-gray-400 leading-relaxed mb-6">"I love how easy it is to buy data and pay for electricity. No more long queues!"</p>
+                        <div>
+                            <p class="testimonial-name font-semibold text-white">Amara Eze</p>
+                            <p class="text-sm text-gray-500">Student</p>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass glass-card tilt-card clay p-8 reveal-scale fade-in-d3">
+                        <div class="flex text-amber-400 gap-0.5 mb-4">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <p class="testimonial-text text-gray-400 leading-relaxed mb-6">"Receiving international payments is seamless with BlowPay. Highly recommended!"</p>
+                        <div>
+                            <p class="testimonial-name font-semibold text-white">Kemi Adeleke</p>
+                            <p class="text-sm text-gray-500">Freelancer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION: FINAL CTA -->
+        <!-- ============================================================ -->
+        <section id="cta" class="relative py-24 px-6 sm:px-12 lg:px-20 overflow-hidden">
+            <div class="blob absolute inset-0 opacity-10 pointer-events-none" style="background:radial-gradient(ellipse at center, rgba(236,72,153,0.3), transparent 70%);"></div>
+
+            <div class="relative max-w-4xl mx-auto text-center fade-in">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white reveal-wipe">
+                    Ready to
+                    <span class="text-gradient-pink">Get Started?</span>
+                </h2>
+                <p class="text-lg mb-8 max-w-2xl mx-auto text-gray-400 reveal-blur fade-in-d1">Join thousands of users who trust BlowPay for their daily bill payments</p>
+                <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" id="cta-btn" class="inline-flex items-center gap-2 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full px-8 py-4 hover:from-pink-600 hover:to-red-600 transition-all shadow-lg shadow-pink-500/30 btn-shimmer btn-magnetic group">
+                    Get Started - It's Free
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-1 transition-transform">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- FOOTER -->
+        <!-- ============================================================ -->
+        <footer id="footer" class="bg-gray-900 text-white pt-12 pb-8 px-6 sm:px-12 lg:px-20">
+            <div class="max-w-6xl mx-auto fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                    <!-- Brand -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-gradient-pink mb-4">BlowPay</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Making bill payments easy and seamless for everyone.</p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="font-semibold text-white mb-4">Quick Links</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="index.html"   class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                            <li><a href="aboutus.html" class="text-gray-400 hover:text-white transition-colors">About us</a></li>
+                            <li><a href="terms.html"   class="text-gray-400 hover:text-white transition-colors">Terms &amp; Condition</a></li>
+                            <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="faq.html"     class="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
+                            <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact us</a></li>
+                            <li><a href="delete-user-account.html" class="text-gray-400 hover:text-white transition-colors">Delete Account</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div>
+                        <h4 class="font-semibold text-white mb-4">Contact Info</h4>
+                        <ul class="space-y-3 text-sm text-gray-400">
+                            <li class="flex items-start gap-3">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" class="mt-0.5 flex-shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <span>Plot 25, Ojefia Crescent, Victory Estate, Amuwo Odofin, Ago Place Way, Lagos-Nigeria</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" class="flex-shrink-0"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7L12 13 2 7"/></svg>
+                                <a href="mailto:support@blowpay.app" class="hover:text-white transition-colors">support@blowpay.app</a>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" class="flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                <span><a href="tel:+2348023512266" class="hover:text-white transition-colors">+234 802 351 2266</a>, <a href="tel:+2349065345907" class="hover:text-white transition-colors">+234 906 534 5907</a></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Download Buttons -->
+                    <div>
+                        <h4 class="font-semibold text-white mb-4">Download App</h4>
+                        <div class="flex flex-col gap-3">
+                            <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" class="flex items-center gap-3 glass rounded-xl px-4 py-3 transition-all glow-ring">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                                <div><p class="text-[10px] text-gray-400">Download on the</p><p class="text-sm font-semibold text-white">App Store</p></div>
+                            </a>
+                            <a href="#" class="flex items-center gap-3 glass rounded-xl px-4 py-3 transition-all glow-ring">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 283" width="24" height="24" style="opacity:1;">
+    <path fill="#EA4335" d="M119.553 134.916L1.06 259.061a32.14 32.14 0 0 0 47.062 19.071l133.327-75.934z"/>
+    <path fill="#FBBC04" d="M239.37 113.814L181.715 80.79l-64.898 56.95l65.162 64.28l57.216-32.67a31.345 31.345 0 0 0 0-55.537z"/>
+    <path fill="#4285F4" d="M1.06 23.487A30.6 30.6 0 0 0 0 31.61v219.327a32.3 32.3 0 0 0 1.06 8.124l122.555-120.966z"/>
+    <path fill="#34A853" d="m120.436 141.274l61.278-60.483L48.564 4.503A32.85 32.85 0 0 0 32.051 0C17.644-.028 4.978 9.534 1.06 23.399z"/>
+</svg>                                <div><p class="text-[10px] text-gray-400">Get it on</p><p class="text-sm font-semibold text-white">Google Play</p></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="flex justify-center gap-4 mb-6">
+                    <a href="https://www.facebook.com/profile.php?id=61554387265318" class="w-10 h-10 rounded-full glass flex items-center justify-center transition-all hover:scale-110 glow-ring">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-gray-300"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="https://x.com/blowpay?t=_u9Iu713g3zcX8nybf8Nag&s=08" class="w-10 h-10 rounded-full glass flex items-center justify-center transition-all hover:scale-110 glow-ring">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-gray-300"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/blowpay.app/" class="w-10 h-10 rounded-full glass flex items-center justify-center transition-all hover:scale-110 glow-ring">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-gray-300"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    
+                </div>
+
+                <div class="border-t border-white/10 pt-6 text-center text-sm text-gray-500">
+                    <p>© 2026 BlowPay. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

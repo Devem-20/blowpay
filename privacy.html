@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - BlowPay</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e5e5e5;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        #app {
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #0d0d0d);
+            min-height: 100vh;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #ec4899; border-radius: 9999px; }
+        * { scrollbar-width: thin; scrollbar-color: #ec4899 #1a1a1a; }
+        .policy-section {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 2rem;
+        }
+        .policy-section:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- ─── NAVBAR ────────────────────────────────────────── -->
+        <nav class="flex items-center justify-between px-4 sm:px-8 py-4 border-b border-white/10">
+            <!-- Logo + BLOWPAY Text -->
+            <div class="flex items-center gap-2">
+                <img src="images/logo.png" alt="BlowPay Logo" class="h-10 sm:h-12 w-auto" />
+                <span class="text-white font-bold text-xl sm:text-2xl">BLOWPAY</span>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors text-sm">Home</a>
+                <a href="aboutus.html" class="text-gray-400 hover:text-white transition-colors text-sm">About Us</a>
+                <a href="terms.html" class="text-gray-400 hover:text-white transition-colors text-sm">Terms</a>
+                <a href="privacy.html" class="text-white transition-colors text-sm font-medium">Privacy</a>
+                <a href="faq.html" class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition-colors text-sm">Contact</a>
+            </div>
+
+            <!-- Right Side: Download App + Hamburger -->
+            <div class="flex items-center gap-3">
+                <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" class="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-red-500 px-5 py-2.5 rounded-full hover:from-pink-600 hover:to-red-600 transition-all shadow-lg shadow-pink-500/30">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Download App
+                </a>
+                <!-- Hamburger Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full glass border border-white/20">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- ─── MOBILE MENU (Fixed Opacity) ────────────────────────── -->
+        <div id="mobile-menu" class="lg:hidden fixed top-20 left-4 right-4 z-30 rounded-2xl shadow-2xl p-4" style="background: rgba(20, 20, 20, 0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08);">
+            <a href="index.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Home</a>
+            <a href="aboutus.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">About Us</a>
+            <a href="terms.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Terms</a>
+            <a href="privacy.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Privacy</a>
+            <a href="faq.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">FAQ</a>
+            <a href="contact.html" class="block px-4 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">Contact</a>
+            <a href="https://apps.apple.com/ng/app/blowpay/id6502171466" id="mobile-cta" class="flex items-center justify-center gap-2 w-full text-center text-white bg-gradient-to-r from-pink-500 to-red-500 px-4 py-3 rounded-xl mt-2 font-medium btn-shimmer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download App
+            </a>
+        </div>
+
+        <!-- ─── PRIVACY POLICY CONTENT ──────────────────────────── -->
+        <section class="py-16 px-6 sm:px-12 lg:px-20">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl font-bold text-white mb-2 fade-in visible">
+                    Privacy <span class="bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">Policy</span>
+                </h1>
+                <p class="text-gray-400 mb-2 fade-in visible">Last Updated: June 1, 2026</p>
+                <p class="text-gray-400 text-sm mb-12 fade-in visible">
+                    Welcome to the mobile applications BlowPay and BlowMoney (collectively, the "Apps"), owned and operated
+                    by BLOWPAY GLOBAL SERVICES LIMITED and its affiliates including BlowMoney Group Inc. ("we," "us,"
+                    or "our"). We are committed to protecting your privacy and ensuring your personal data is handled securely
+                    and transparently.
+                </p>
+
+                <div class="space-y-8">
+                    <!-- Section 1 -->
+                    <div class="policy-section fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">1. Important Corporate &amp; Regulatory Disclosures</h2>
+                        <p class="text-gray-400 leading-relaxed mb-3">To maintain transparency with our users and global app stores, please note the following legal statuses:</p>
+                        <p class="text-gray-400 leading-relaxed font-semibold text-white/80">Corporate Registrations &amp; Entities:</p>
+                        <ul class="list-disc list-inside text-gray-400 mt-1 space-y-1">
+                            <li><strong class="text-white">Nigeria:</strong> Registered as BLOWPAY GLOBAL SERVICES LIMITED with Corporate Affairs Commission (CAC) Registration Number RC7300664.</li>
+                            <li><strong class="text-white">Sierra Leone:</strong> Registered under Registration Number NGA250725BLOWP00260.</li>
+                            <li><strong class="text-white">United States:</strong> Operated under BlowMoney Group Inc. with Employer Identification Number (EIN) 99-3335904.</li>
+                        </ul>
+                        <p class="text-gray-400 leading-relaxed mt-3"><strong class="text-white">Anti-Money Laundering (AML) Compliance:</strong> Registered with the Special Control Unit Against Money Laundering (SCUML) in Nigeria under Registration Number SC251009114.</p>
+                        <p class="text-gray-400 leading-relaxed mt-3"><strong class="text-white">Our Role as an Intermediary:</strong> We do not hold, store, or manage user funds. BlowPay and BlowMoney function strictly as technology intermediaries. All monetary deposits, fund transfers, and financial transactions are securely processed and held by our licensed, regulated banking and financial partners.</p>
+                    </div>
+
+                    <!-- ─── NEW PHRASE SECTION ────────────────────────────── -->
+                    <div class="fade-in">
+                        <p class="text-gray-300 leading-relaxed p-4 bg-white/5 rounded-xl border border-white/5 text-center">
+                            BlowPay and BlowMoney operate on separate domains — <a href="https://blowpay.app" class="text-pink-400 hover:text-pink-300 transition-colors">blowpay.app</a> and <a href="https://blowmoneypay.com" class="text-pink-400 hover:text-pink-300 transition-colors">blowmoneypay.com</a> — but are fully managed by a single unified core team and infrastructure, ensuring consistent operations, security, and service delivery across both platforms.
+                        </p>
+                    </div>
+
+                    <!-- Section 2 -->
+                    <div class="policy-section fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">2. Information We Collect</h2>
+                        <p class="text-gray-400 leading-relaxed mb-3">To provide our intermediary billing and financial services, verify your identity, and fulfill regulatory compliance, we collect the following basic personal information from you:</p>
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <li><strong class="text-white">Identity Data:</strong> Full Name.</li>
+                            <li><strong class="text-white">Contact Data:</strong> Email Address and Phone Number.</li>
+                            <li><strong class="text-white">Physical Data:</strong> Residential Address.</li>
+                            <li><strong class="text-white">Financial Verification Data (Nigeria):</strong> Bank Verification Number (BVN).</li>
+                        </ul>
+                        <p class="text-gray-400 leading-relaxed mt-3 text-sm bg-white/5 p-4 rounded-xl border border-white/5">
+                            <strong class="text-pink-400">Important Note on BVN:</strong> We only collect your BVN for mandatory Know Your Customer (KYC) identity verification purposes as required by financial regulations. We never use your BVN to access your bank accounts or view your balances.
+                        </p>
+                    </div>
+
+                    <!-- Section 3 -->
+                    <div class="policy-section fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">3. How We Use Your Information</h2>
+                        <p class="text-gray-400 leading-relaxed mb-3">We use the gathered information to:</p>
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <li>Facilitate bills payment (Airtime, Electricity, Water Board, Internet Plans) via BlowPay.</li>
+                            <li>Enable peer-to-peer fund transfers and deposits via BlowMoney.</li>
+                            <li>Verify your identity to prevent fraud and comply with global KYC regulations.</li>
+                            <li>Fulfill our legal obligations regarding Anti-Money Laundering (AML) and Counter-Terrorism Financing (CTF) tracking.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Section 4 -->
+                    <div class="policy-section fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">4. Third-Party Data Sharing &amp; Partners</h2>
+                        <p class="text-gray-400 leading-relaxed mb-3">Because we are a technology intermediary, your information is securely shared with our primary, licensed financial service providers to execute transactions and complete identity verifications.</p>
+                        <p class="text-gray-400 leading-relaxed mb-3">We share your data with the following onboarded, approved partners:</p>
+                        <div class="flex flex-wrap gap-3 mb-3">
+                            <span class="bg-white/5 px-4 py-2 rounded-full border border-white/10 text-gray-300 text-sm">Flutterwave</span>
+                            <span class="bg-white/5 px-4 py-2 rounded-full border border-white/10 text-gray-300 text-sm">Paystack</span>
+                            <span class="bg-white/5 px-4 py-2 rounded-full border border-white/10 text-gray-300 text-sm">Cashonrails</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed text-sm">These partners use your data strictly to process payments, cross-reference KYC details, and maintain compliance with legal and central banking frameworks. We do not sell, rent, or trade your personal information to third-party advertisers.</p>
+                    </div>
+
+                    <!-- Section 5 -->
+                    <div class="policy-section fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">5. Data Security &amp; Storage</h2>
+                        <p class="text-gray-400 leading-relaxed">We employ industry-standard encryption protocols (such as Transport Layer Security/TLS) to safeguard your data during transmission. Because we partner with top-tier financial institutions, your data is handled via secure APIs. While no mobile transmission is 100% secure, we continuously monitor our systems to prevent unauthorized access, alteration, or disclosure of your information.</p>
+                    </div>
+
+                    <!-- Section 6 -->
+                    <div class="policy-section fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">6. Your Data Rights</h2>
+                        <p class="text-gray-400 leading-relaxed mb-3">Depending on your jurisdiction, you have the right to:</p>
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <li>Access the personal data we hold about you.</li>
+                            <li>Request corrections to inaccurate or incomplete information.</li>
+                            <li>Request the deletion of your account and associated personal data (subject to mandatory regulatory data retention laws for financial transactions).</li>
+                            <li>Object to or restrict the processing of your data.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Section 7 -->
+                    <div class="policy-section fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">7. Children's Privacy</h2>
+                        <p class="text-gray-400 leading-relaxed">Our Apps are intended strictly for individuals who are legally capable of engaging in financial transactions (typically 18 years or older). We do not knowingly collect personal data from children. If we discover that a child has provided us with personal data, we will delete it immediately.</p>
+                    </div>
+
+                    <!-- Section 8 -->
+                    <div class="policy-section fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">8. Changes to This Privacy Policy</h2>
+                        <p class="text-gray-400 leading-relaxed">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy within the Apps and updating the "Last Updated" date at the top of this document. Continued use of the Apps after updates constitutes acceptance of the changes.</p>
+                    </div>
+
+                    <!-- Section 9 -->
+                    <div class="fade-in">
+                        <h2 class="text-2xl font-semibold text-white mb-3">9. Contact Us</h2>
+                        <p class="text-gray-400 leading-relaxed mb-3">If you have any questions, complaints, or wish to exercise your data rights, please contact our Compliance Team:</p>
+                        <ul class="text-gray-400 space-y-2">
+                            <li><strong class="text-white">Email:</strong> <a href="mailto:support@blowmoneypay.com" class="text-pink-400 hover:text-pink-300 transition-colors">support@blowmoneypay.com</a></li>
+                        </ul>
+                        <p class="text-gray-400 leading-relaxed font-semibold text-white/80 mt-4">Nigeria Office Address:</p>
+                        <p class="text-gray-400 leading-relaxed text-sm">
+                            BLOWPAY GLOBAL SERVICES LIMITED<br />
+                            Plot 25 Ojefia Cres, Ago Palace Way,<br />
+                            Ilasamaja, Lagos 100001, Lagos, Nigeria
+                        </p>
+                        <p class="text-gray-400 leading-relaxed font-semibold text-white/80 mt-4">US Corporate Address:</p>
+                        <p class="text-gray-400 leading-relaxed text-sm">
+                            BlowMoney Group Inc. (EIN: 99-3335904)<br />
+                            828 Lane Allen Rd Ste 219<br />
+                            Lexington, KY 40504, US
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── FOOTER ────────────────────────────────────────────── -->
+        <footer class="bg-gray-900/50 text-white pt-12 pb-8 px-6 sm:px-12 lg:px-20 border-t border-white/5">
+            <div class="max-w-6xl mx-auto text-center">
+                <p class="text-gray-500 text-sm">© 2026 BlowPay. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ─── JAVASCRIPT ────────────────────────────────────────────── -->
+    <script>
+        // ─── Mobile Menu Toggle ──────────────────────────────
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    mobileMenu.classList.toggle('open');
+                    
+                    // Toggle icon between hamburger and X
+                    const icon = menuBtn.querySelector('svg');
+                    if (mobileMenu.classList.contains('open')) {
+                        icon.innerHTML = `
+                            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        `;
+                    } else {
+                        icon.innerHTML = `
+                            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        `;
+                    }
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('open');
+                        const icon = menuBtn.querySelector('svg');
+                        icon.innerHTML = `
+                            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        `;
+                    });
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                        mobileMenu.classList.remove('open');
+                        const icon = menuBtn.querySelector('svg');
+                        icon.innerHTML = `
+                            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        `;
+                    }
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.remove('open');
+                        const icon = menuBtn.querySelector('svg');
+                        icon.innerHTML = `
+                            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        `;
+                    }
+                });
+            }
+
+            // ─── Fade In on Scroll ──────────────────────────────
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
+            fadeElements.forEach(function(el) { fadeObserver.observe(el); });
+
+            // ─── Fix for elements already visible ──────────────
+            setTimeout(function() {
+                fadeElements.forEach(function(el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) el.classList.add('visible');
+                });
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>
